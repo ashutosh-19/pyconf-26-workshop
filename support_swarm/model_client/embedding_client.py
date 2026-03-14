@@ -18,6 +18,8 @@ def get_embedding_client(settings: Settings | None = None) -> Embeddings:
             kwargs: dict = {"model": settings.embedding_model}
             if cfg.api_key:
                 kwargs["api_key"] = cfg.api_key
+            if cfg.base_url:
+                kwargs["base_url"] = cfg.base_url
             return OpenAIEmbeddings(**kwargs)
 
         case Provider.AZURE_OPENAI:
